@@ -1,5 +1,9 @@
 // Assignment code here
-
+// generate password function has to be connected to the onclick event
+// 
+let generatePassword = function() {
+  console.log("password")
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
