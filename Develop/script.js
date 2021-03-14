@@ -1,6 +1,14 @@
 // Assignment code here
 // generate password function has to be connected to the onclick event
-// 
+// prompt for length, confirm for each character type.
+// upon confirming a character type, add that string of characters to usables array
+// take characterOptions array and create a string
+let stringSpecial = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // two escape characters here!!
+let stringNumeric = "0123456789";
+let stringLower = 'abcdefghijklmnopqrstuvwxyz';
+let stringUpper = toUpperCase('abcdefghijklmnopqrstuvwxyz');
+let characterOptions = [stringSpecial, stringNumeric, stringLower, stringUpper]
+
 let generatePassword = function() {
   let containSpecial = '';
   let containNumeric = '';
@@ -16,11 +24,12 @@ let generatePassword = function() {
   } else {
     window.alert("password is of insufficient length, please try again.")
     document.getElementById("#generate").placeholder = "Your Secure Password";
+    break;
   }
-  
   console.log(passwordLength); console.log(containLower); console.log(containNumeric); console.log(containUpper); console.log(containSpecial);
-  
 }
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
