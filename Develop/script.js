@@ -2,11 +2,24 @@
 // generate password function has to be connected to the onclick event
 // 
 let generatePassword = function() {
-  let passwordLength = window.prompt("How long would you like the password to be?")
-  let containSpecial = window.prompt("Would you like th password to contain special characters?")
-  let containNumeric = window.prompt("Would you like th password to contain numeric characters?")
-  let containLower = window.prompt("Would you like th password to contain uppercase letters?")
-  let containUpper = window.prompt("Would you like th password to contain lowercase letters?")
+  let containSpecial = '';
+  let containNumeric = '';
+  let containLower = '';
+  let containUpper = '';
+  let passwordLength = parseInt(window.prompt("How long would you like the password to be? Please pick a value between 8 and 128 characters long."));
+  if (passwordLength >= 8 && passwordLength <= 128) {
+    containSpecial = window.confirm("Would you like the password to contain special characters?");
+    containNumeric = window.confirm("Would you like the password to contain numeric characters?");
+    containLower = window.confirm("Would you like the password to contain uppercase letters?");
+    containUpper = window.confirm("Would you like the password to contain lowercase letters?");
+    return containSpecial, containUpper, containLower, containNumeric;
+  } else {
+    window.alert("password is of insufficient length, please try again.")
+    document.getElementById("#generate").placeholder = "Your Secure Password";
+  }
+  
+  console.log(passwordLength); console.log(containLower); console.log(containNumeric); console.log(containUpper); console.log(containSpecial);
+  
 }
 
 // Get references to the #generate element
