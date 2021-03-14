@@ -2,7 +2,11 @@
 // generate password function has to be connected to the onclick event
 // 
 let generatePassword = function() {
-  console.log("password")
+  let passwordLength = window.prompt("How long would you like the password to be?")
+  let containSpecial = window.prompt("Would you like th password to contain special characters?")
+  let containNumeric = window.prompt("Would you like th password to contain numeric characters?")
+  let containLower = window.prompt("Would you like th password to contain uppercase letters?")
+  let containUpper = window.prompt("Would you like th password to contain lowercase letters?")
 }
 
 // Get references to the #generate element
