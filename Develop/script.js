@@ -46,17 +46,28 @@ let generatePassword = function() {
       password = password.concat(numericArr[Math.floor((Math.random() * passwordLength))])
       
     }
+    remainingPasswordLength = passwordLength - optionQuantity;
     // loop through remaining characters in password
-    for (var i = 0; i < passwordLength - optionQuantity; i++) {
+    for (var i = 0; i < remainingPasswordLength; i++) {
       // get an array of all the selected character options to add from
       let allOptionsArr = characterOptions.split('');
-      password = password.concat(allOptionsArr[Math.floor((Math.random() * allOptionsArr.length))])
+      password = password.concat(allOptionsArr[getRandomInt(allOptionsArr.length)])
     }
+    var passwordArr = password.split('');
+    var passwordArrLength = passwordArr.length;
+    // add logic to shuffle the characters in password :)
+    // for (var i = 0; i < passwordArrLength - 1; i++) {
+    //   var j = 0;
+    // }
     return password;
   } else {
     window.alert("password is of insufficient length, please try again.")
     document.getElementById("#password").placeholder = "Your Secure Password";
   }
+}
+
+function getRandomInt(n) {
+  return Math.floor(Math.random() * n)
 }
 
 // Get references to the #generate element
