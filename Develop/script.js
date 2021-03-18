@@ -13,22 +13,17 @@ let arrayNumeric = stringNumeric.split();
 let arrayLower = stringLower.split();
 let arrayUpper = stringUpper.split();
 
-console.log(arrayFull)
-
 let generatePassword = function() {
   var password = '';
+  var usableCharacters = '';
   let containSpecial = '';
   let containNumeric = '';
   let containLower = '';
   let containUpper = '';
   let passwordLength = parseInt(window.prompt("How long would you like the password to be? Please pick a value between 8 and 128 characters long."));
   if (passwordLength >= 8 && passwordLength <= 128) {
-    containSpecial = window.confirm("Would you like the password to contain special characters?");
+    conditionChecker();
     
-    containNumeric = window.confirm("Would you like the password to contain numeric characters?");
-    containLower = window.confirm("Would you like the password to contain uppercase letters?");
-    containUpper = window.confirm("Would you like the password to contain lowercase letters?");
-    return containSpecial, containUpper, containLower, containNumeric;
   } else {
     window.alert("password is of insufficient length, please try again.")
     document.getElementById("#generate").placeholder = "Your Secure Password";
@@ -37,7 +32,13 @@ let generatePassword = function() {
   console.log(passwordLength); console.log(containLower); console.log(containNumeric); console.log(containUpper); console.log(containSpecial);
 }
 
-
+let conditionChecker = function() {
+  let containSpecial = window.confirm("Would you like the password to contain special characters?");
+  let containNumeric = window.confirm("Would you like the password to contain numeric characters?");
+  let containLower = window.confirm("Would you like the password to contain uppercase letters?");
+  let containUpper = window.confirm("Would you like the password to contain lowercase letters?");
+  return containSpecial, containUpper, containLower, containNumeric;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
