@@ -44,48 +44,20 @@ let generatePassword = function() {
       let numericArr = stringNumeric.split('');
       optionQuantity++;
       password = password.concat(numericArr[Math.floor((Math.random() * passwordLength))])
-      console.log(password);
+      
     }
-    console.log(characterOptions);
-    console.log(optionQuantity);
-    // for (var i = 0; i < passwordLength; i++) {
-    // }
+    // loop through remaining characters in password
+    for (var i = 0; i < passwordLength - optionQuantity; i++) {
+      // get an array of all the selected character options to add from
+      let allOptionsArr = characterOptions.split('');
+      password = password.concat(allOptionsArr[Math.floor((Math.random() * allOptionsArr.length))])
+    }
+    return password;
   } else {
     window.alert("password is of insufficient length, please try again.")
-    document.getElementById("#generate").placeholder = "Your Secure Password";
+    document.getElementById("#password").placeholder = "Your Secure Password";
   }
-  console.log(passwordLength);
 }
-
-// let conditionChecker = function() {
-//   let containSpecial = window.confirm("Would you like the password to contain special characters?");
-//   let containNumeric = window.confirm("Would you like the password to contain numeric characters?");
-//   let containLower = window.confirm("Would you like the password to contain uppercase letters?");
-//   let containUpper = window.confirm("Would you like the password to contain lowercase letters?");
-//   return containSpecial, containUpper, containLower, containNumeric;
-// }
-
-// let usableCharacters = function() {
-//   let containSpecial = '';
-//   let containNumeric = '';
-//   let containLower = '';
-//   let containUpper = '';
-//   conditionChecker();
-//   if (containSpecial) {
-//     // add characters to the string of possible character options
-//     characterOptions = characterOptions.concat(stringSpecial);
-//   }
-//   if (containUpper) {
-//     characterOptions = characterOptions.concat(stringUpper);
-//   }
-//   if (containLower) {
-//     characterOptions = characterOptions.concat(stringLower);
-//   }
-//   if (containNumeric) {
-//     characterOptions = characterOptions.concat(stringNumeric);
-//   }
-//   console.log(characterOptions)
-// }
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
