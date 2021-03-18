@@ -7,9 +7,16 @@ let stringSpecial = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // two escape charact
 let stringNumeric = "0123456789";
 let stringLower = 'abcdefghijklmnopqrstuvwxyz';
 let stringUpper = toUpperCase('abcdefghijklmnopqrstuvwxyz');
-let characterOptions = [stringSpecial, stringNumeric, stringLower, stringUpper]
+
+let arraySpecial = stringSpecial.split();
+let arrayNumeric = stringNumeric.split();
+let arrayLower = stringLower.split();
+let arrayUpper = stringUpper.split();
+
+console.log(arrayFull)
 
 let generatePassword = function() {
+  var password = '';
   let containSpecial = '';
   let containNumeric = '';
   let containLower = '';
@@ -17,6 +24,7 @@ let generatePassword = function() {
   let passwordLength = parseInt(window.prompt("How long would you like the password to be? Please pick a value between 8 and 128 characters long."));
   if (passwordLength >= 8 && passwordLength <= 128) {
     containSpecial = window.confirm("Would you like the password to contain special characters?");
+    
     containNumeric = window.confirm("Would you like the password to contain numeric characters?");
     containLower = window.confirm("Would you like the password to contain uppercase letters?");
     containUpper = window.confirm("Would you like the password to contain lowercase letters?");
