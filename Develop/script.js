@@ -6,47 +6,94 @@
 let stringSpecial = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // two escape characters here!!
 let stringNumeric = "0123456789";
 let stringLower = 'abcdefghijklmnopqrstuvwxyz';
-let stringUpper = toUpperCase('abcdefghijklmnopqrstuvwxyz');
-
-let arraySpecial = stringSpecial.split();
-let arrayNumeric = stringNumeric.split();
-let arrayLower = stringLower.split();
-let arrayUpper = stringUpper.split();
+let stringUpper = stringLower.toUpperCase();
+let characterOptions = '';
 
 let generatePassword = function() {
-  var password = '';
-  var usableCharacters = '';
-  let containSpecial = '';
-  let containNumeric = '';
-  let containLower = '';
-  let containUpper = '';
+  let password = '';
   let passwordLength = parseInt(window.prompt("How long would you like the password to be? Please pick a value between 8 and 128 characters long."));
+  let optionQuantity = 0;
   if (passwordLength >= 8 && passwordLength <= 128) {
-    conditionChecker();
-    
+    let containSpecial = window.confirm("Would you like the password to contain special characters?");
+    let containNumeric = window.confirm("Would you like the password to contain numeric characters?");
+    let containLower = window.confirm("Would you like the password to contain uppercase letters?");
+    let containUpper = window.confirm("Would you like the password to contain lowercase letters?");
+    if (containSpecial) {
+      // add characters to the string of possible character options
+      characterOptions = characterOptions.concat(stringSpecial);
+      // turn the options into an array
+      let specialArr = stringSpecial.split('');
+      optionQuantity++;
+      //select random character from the array and add it to the password
+      password = password.concat(specialArr[Math.floor((Math.random() * passwordLength))])
+    }
+    if (containUpper) {
+      characterOptions = characterOptions.concat(stringUpper);
+      let upperArr = stringUpper.split('');
+      optionQuantity++;
+      password = password.concat(upperArr[Math.floor((Math.random() * passwordLength))])
+    }
+    if (containLower) {
+      characterOptions = characterOptions.concat(stringLower);
+      let lowerArr = stringLower.split('');
+      optionQuantity++;
+      password = password.concat(lowerArr[Math.floor((Math.random() * passwordLength))])
+    }
+    if (containNumeric) {
+      characterOptions = characterOptions.concat(stringNumeric);
+      let numericArr = stringNumeric.split('');
+      optionQuantity++;
+      password = password.concat(numericArr[Math.floor((Math.random() * passwordLength))])
+      console.log(password);
+    }
+    console.log(characterOptions);
+    console.log(optionQuantity);
+    // for (var i = 0; i < passwordLength; i++) {
+    // }
   } else {
     window.alert("password is of insufficient length, please try again.")
     document.getElementById("#generate").placeholder = "Your Secure Password";
-    break;
   }
-  console.log(passwordLength); console.log(containLower); console.log(containNumeric); console.log(containUpper); console.log(containSpecial);
+  console.log(passwordLength);
 }
 
-let conditionChecker = function() {
-  let containSpecial = window.confirm("Would you like the password to contain special characters?");
-  let containNumeric = window.confirm("Would you like the password to contain numeric characters?");
-  let containLower = window.confirm("Would you like the password to contain uppercase letters?");
-  let containUpper = window.confirm("Would you like the password to contain lowercase letters?");
-  return containSpecial, containUpper, containLower, containNumeric;
-}
+// let conditionChecker = function() {
+//   let containSpecial = window.confirm("Would you like the password to contain special characters?");
+//   let containNumeric = window.confirm("Would you like the password to contain numeric characters?");
+//   let containLower = window.confirm("Would you like the password to contain uppercase letters?");
+//   let containUpper = window.confirm("Would you like the password to contain lowercase letters?");
+//   return containSpecial, containUpper, containLower, containNumeric;
+// }
+
+// let usableCharacters = function() {
+//   let containSpecial = '';
+//   let containNumeric = '';
+//   let containLower = '';
+//   let containUpper = '';
+//   conditionChecker();
+//   if (containSpecial) {
+//     // add characters to the string of possible character options
+//     characterOptions = characterOptions.concat(stringSpecial);
+//   }
+//   if (containUpper) {
+//     characterOptions = characterOptions.concat(stringUpper);
+//   }
+//   if (containLower) {
+//     characterOptions = characterOptions.concat(stringLower);
+//   }
+//   if (containNumeric) {
+//     characterOptions = characterOptions.concat(stringNumeric);
+//   }
+//   console.log(characterOptions)
+// }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
