@@ -25,26 +25,25 @@ let generatePassword = function() {
       let specialArr = stringSpecial.split('');
       optionQuantity++;
       //select random character from the array and add it to the password
-      password = password.concat(specialArr[Math.floor((Math.random() * passwordLength))])
+      password = password.concat(specialArr[getRandomInt(specialArr.length)])
     }
     if (containUpper) {
       characterOptions = characterOptions.concat(stringUpper);
       let upperArr = stringUpper.split('');
       optionQuantity++;
-      password = password.concat(upperArr[Math.floor((Math.random() * passwordLength))])
+      password = password.concat(upperArr[getRandomInt(upperArr.length)])
     }
     if (containLower) {
       characterOptions = characterOptions.concat(stringLower);
       let lowerArr = stringLower.split('');
       optionQuantity++;
-      password = password.concat(lowerArr[Math.floor((Math.random() * passwordLength))])
+      password = password.concat(lowerArr[getRandomInt(lowerArr.length)])
     }
     if (containNumeric) {
       characterOptions = characterOptions.concat(stringNumeric);
       let numericArr = stringNumeric.split('');
       optionQuantity++;
-      password = password.concat(numericArr[Math.floor((Math.random() * passwordLength))])
-      
+      password = password.concat(numericArr[getRandomInt(numericArr.length)])
     }
     remainingPasswordLength = passwordLength - optionQuantity;
     // loop through remaining characters in password
@@ -53,15 +52,19 @@ let generatePassword = function() {
       let allOptionsArr = characterOptions.split('');
       password = password.concat(allOptionsArr[getRandomInt(allOptionsArr.length)])
     }
-    var passwordArr = password.split('');
-    var passwordArrLength = passwordArr.length;
     // add logic to shuffle the characters in password :)
-    // for (var i = 0; i < passwordArrLength - 1; i++) {
-    //   var j = 0;
-    // }
+    var passwordArr = password.split(''); // convert array to string
+    for (var i = 0; i < passwordLength - 1; i++) {
+      var j = getRandomInt(passwordLength);
+      // swap arr[i] and arr[j];
+      var temp = passwordArr[i]; 
+      passwordArr[i] = passwordArr[j]
+      passwordArr[j] = temp;
+    }
+    password = passwordArr.join('');
     return password;
   } else {
-    window.alert("password is of insufficient length, please try again.")
+    window.alert("password is of uncomfortable length, please try again.")
     document.getElementById("#password").placeholder = "Your Secure Password";
   }
 }
