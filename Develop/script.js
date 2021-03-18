@@ -53,15 +53,20 @@ let generatePassword = function() {
       let allOptionsArr = characterOptions.split('');
       password = password.concat(allOptionsArr[getRandomInt(allOptionsArr.length)])
     }
-    var passwordArr = password.split('');
-    var passwordArrLength = passwordArr.length;
+    var passwordArr = password.split(''); // convert array to string
+    var passLength = passwordArr.length; // get the length
     // add logic to shuffle the characters in password :)
-    // for (var i = 0; i < passwordArrLength - 1; i++) {
-    //   var j = 0;
-    // }
+    for (var i = 0; i < passLength - 1; i++) {
+      var j = getRandomInt(passwordLength);
+      // swap arr[i] and arr[j];
+      var temp = passwordArr[i]; 
+      passwordArr[i] = passwordArr[j]
+      passwordArr[j] = temp;
+    }
+    password = passwordArr.join('');
     return password;
   } else {
-    window.alert("password is of insufficient length, please try again.")
+    window.alert("password is of inappropriate length, please try again.")
     document.getElementById("#password").placeholder = "Your Secure Password";
   }
 }
