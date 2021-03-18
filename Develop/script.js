@@ -49,21 +49,11 @@ let generatePassword = function() {
     remainingPasswordLength = passwordLength - optionQuantity;
     // loop through remaining characters in password
     for (var i = 0; i < remainingPasswordLength; i++) {
-      // get an array of all the selected character options to add from
+      // get an array of all the selected0 character options to add from
       let allOptionsArr = characterOptions.split('');
       password = password.concat(allOptionsArr[getRandomInt(allOptionsArr.length)])
     }
-    var passwordArr = password.split(''); // convert array to string
-    var passLength = passwordArr.length; // get the length
-    // add logic to shuffle the characters in password :)
-    for (var i = 0; i < passLength - 1; i++) {
-      var j = getRandomInt(passwordLength);
-      // swap arr[i] and arr[j];
-      var temp = passwordArr[i]; 
-      passwordArr[i] = passwordArr[j]
-      passwordArr[j] = temp;
-    }
-    password = passwordArr.join('');
+    stringShuffler(password)
     return password;
   } else {
     window.alert("password is of inappropriate length, please try again.")
@@ -71,8 +61,23 @@ let generatePassword = function() {
   }
 }
 
-function getRandomInt(n) {
+var getRandomInt = function(n) {
   return Math.floor(Math.random() * n)
+}
+
+var stringShuffler = function(s) {
+  var genericArr = s.split(''); // convert string to array
+  var n = genericArr.length; // get the length
+  // here we shuffle the characters in our string
+  for (var i = 0; i < n - 1; i++) {
+    var j = getRandomInt(n);
+    // swap arr[i] and arr[j];
+    var temp = genericArr[i]; 
+    genericArr[i] = genericArr[j]
+    genericArr[j] = temp;
+  }
+  s = genericArr.join('');
+  return s;
 }
 
 // Get references to the #generate element
