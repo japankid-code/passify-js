@@ -6,4 +6,4 @@ The repository is [here](https://github.com/japankid-code/passify-js), webpage i
 
 ## preview
 
-![preview of site]()
+![preview of site](preview.png)
